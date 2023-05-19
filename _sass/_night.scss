@@ -3,7 +3,7 @@ $color-text: #ffffffe6;
 $color-subtext: #B0B3B8;
 $color-border: #3A3B3C;
 $color-bg: #18191A;
-$color-box-background: mix($color-primary, white, 4%);
+$color-box-background: mix($color-bg, black, 4%);
 
 body.night-mode {
   background-color: $color-bg;
