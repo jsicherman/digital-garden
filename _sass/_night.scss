@@ -42,6 +42,10 @@ body.night-mode footer {
   color: mix($color-text, white, 80%);
 }
 
+body.night-mode footer a.internal-link {
+  color: mix($color-text, white, 80%);
+}
+
 body.night-mode blockquote {
   background: $color-box-background;
   border-radius: $border-radius;
@@ -49,6 +53,14 @@ body.night-mode blockquote {
 
 body.night-mode hr {
   background: $color-border;
+}
+
+body.night-mode nav a.internal-link {
+    color: $color-primary;
+}
+
+body.night-mode a.internal-link {
+    color: $color-bg;
 }
 
 body.night-mode a {
@@ -69,7 +81,14 @@ body.night-mode *:focus {
 }
 
 body.night-mode .backlink-box {
-  background: $color-box-background;
+  background: $color-border;
+}
+
+body.night-mode .backlink-box .internal-link {
+    color: unset;
+    &:hover {
+      background-color: #303132;
+    }
 }
 
 body.night-mode code {

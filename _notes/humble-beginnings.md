@@ -22,6 +22,6 @@ to that end, i present this: a note. legible, orderly, and meticulously spel-che
 
 i'll make an excuse for myself right at the outset: journaling, notetaking, _reflecting_... the process by which words find their way from my brain onto a defined medium at a defined cadence... it's not my strong suit. so if i falter, please return to re-read the previous sentence and get off my ass. but then read on, because the it's also the reason i'm beginning to begin.
 
-these notes will be about everything and nothing. perhaps sometimes i'll ramble (i will). perhaps sometimes no more than a single phrase. non-english. non-sensical. it's all fair play, and hopefully my ocd will compel me to outlink appropriately.
+these notes will be about everything and nothing. perhaps sometimes i'll ramble (i will). perhaps sometimes no more than a single phrase. non-english. non-sensical. it's all fair play, and hopefully my ocd will continue to compel me to outlink appropriately and lay order to the chaos.
 
 and so we go.
