@@ -23,6 +23,18 @@ body {
   }
 }
 
+.footnotes:before {
+  content: "---";
+}
+
+.footnotes {
+  font-size: smaller;
+}
+
+.footnotes p {
+  font-style: italic;
+}
+
 time {
   display: block;
   color: $color-subtext;

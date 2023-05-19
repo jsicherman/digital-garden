@@ -1,0 +1,87 @@
+$color-primary: #ffffff;
+$color-text: #ffffffe6;
+$color-subtext: #B0B3B8;
+$color-border: #3A3B3C;
+$color-bg: #18191A;
+$color-box-background: mix($color-primary, white, 4%);
+
+body.night-mode {
+  background-color: $color-bg;
+  color: $color-text;
+}
+
+body.night-mode #tooltip-wrapper {
+    background-color: $color-border;
+    border: 1px solid #171910;
+}
+
+body.night-mode #tooltip-wrapper:after {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 90%);
+}
+
+body.night-mode #graph-wrapper {
+    background-color: $color-border;
+}
+
+body.night-mode #graph-wrapper .text text {
+    fill: $color-text;
+    text-shadow: unset;
+}
+
+body.night-mode
+.nodes [active],
+.text [active] {
+  fill: white;
+}
+
+body.night-mode time {
+  color: $color-subtext;
+}
+
+body.night-mode footer {
+  color: mix($color-text, white, 80%);
+}
+
+body.night-mode blockquote {
+  background: $color-box-background;
+  border-radius: $border-radius;
+}
+
+body.night-mode hr {
+  background: $color-border;
+}
+
+body.night-mode a {
+  border-bottom: 1px solid $color-border;
+  color: $color-primary;
+  &:hover {
+    color: $color-text !important;
+    background: $color-border;
+  }
+  &:after {
+    color: #aaaaaa;
+  }
+}
+
+body.night-mode *:focus {
+  background: $color-border !important;
+  color: $color-text !important;
+}
+
+body.night-mode .backlink-box {
+  background: $color-box-background;
+}
+
+body.night-mode code {
+  background: #303132;
+}
+
+body.night-mode .invalid-link {
+  color: #444444;
+  background: #fafafa;
+}
+  
+body.night-mode .invalid-link-brackets {
+  color: #ccc;
+}
+  

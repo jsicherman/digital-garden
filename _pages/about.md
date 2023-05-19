@@ -1,9 +1,14 @@
 ---
 layout: page
-title: About
+title: about
 permalink: /about
 ---
 
-*This is an about page.*
+hi, jordan here. welcome to my corner of the internet.
 
-Feel free to tell the world about what you love! 😍
+<hr>
+
+[linkedin](https://www.linkedin.com/in/jsicherm)
+[github](https://github.com/jsicherman)
+[google scholar](https://scholar.google.com/citations?user=Y7cWq1YAAAAJ)
+[endless horse](http://endless.horse)

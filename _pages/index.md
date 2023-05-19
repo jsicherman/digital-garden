@@ -1,33 +1,34 @@
 ---
 layout: page
-title: Home
+title: home
 id: home
 permalink: /
 ---
 
-# Welcome! 🌱
+# happy {{ 'now' | date: "%A" | downcase }}.
 
-<p style="padding: 3em 1em; background: #f5f7ff; border-radius: 4px;">
-  Take a look at <span style="font-weight: bold">[[Your first note]]</span> to get started on your exploration.
-</p>
+i hope you like to read things. or just stare knowingly if you don't know how to.
 
-This digital garden template is free, open-source, and [available on GitHub here](https://github.com/maximevaillancourt/digital-garden-jekyll-template).
-
-The easiest way to get started is to read this [step-by-step guide explaining how to set this up from scratch](https://maximevaillancourt.com/blog/setting-up-your-own-digital-garden-with-jekyll).
-
-<strong>Recently updated notes</strong>
+<strong>hot off the press:</strong>
 
 <ul>
   {% assign recent_notes = site.notes | sort: "last_modified_at_timestamp" | reverse %}
   {% for note in recent_notes limit: 5 %}
+    {% assign d = note.last_modified_at | date: "%j" %}
+    {%capture d %}
+      {% case d | slice: -1, 1 %}
+        {% when "1" %}{{ d }}st
+        {% when "2" %}{{ d }}nd
+        {% when "3" %}{{ d }}rd
+        {% else %}{{ d }}th
+      {% endcase %}
+    {% endcapture %}
     <li>
-      {{ note.last_modified_at | date: "%Y-%m-%d" }} — <a class="internal-link" href="{{ note.url }}">{{ note.title }}</a>
+      {{ note.last_modified_at | date: "the DAY day of %Y" | replace: "DAY", d }} — <a class="internal-link" href="{{ note.url }}">{{ note.title }}</a>
     </li>
   {% endfor %}
 </ul>
 
-<style>
-  .wrapper {
-    max-width: 46em;
-  }
-</style>
+<hr>
+
+{% include notes_graph.html %}
