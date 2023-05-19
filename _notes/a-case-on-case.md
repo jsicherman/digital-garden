@@ -12,4 +12,4 @@ not insignificantly, it also creates great opportunities for low-effort typograp
 
 ### digitus V manus
 
-i'll report back if the most ulnar digit of my left hand starts to shrivel up from lack of use. otherwise, expect a lot lowercase characters, and count your blessings that i didn't opt for lower_snake_case as my insurrection of choice.
+i'll report back if the most ulnar digit of my left hand starts to shrivel up from lack of use. otherwise, expect a lot of lowercase characters, and count your blessings that i didn't opt for lower_snake_case as my insurrection of choice.
