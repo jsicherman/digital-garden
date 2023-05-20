@@ -12,7 +12,7 @@ on the bright side: emojis are much more accessible 🤠
 
 ui size: smallest. font size: tiny. thumb size: xl. don't just take my word for it, look at the data:
 
-<img source="/assets/typing.jpg" />
+<img src="/assets/typing.jpg" />
 
 autocorrect means that i don't actually have to consider which letters i'm hitting and i can instead just conjure up words from the english/french/spanish/russian dictionary with a quick swipe. unfortunately,
 1. it also autocorrects capitalization
