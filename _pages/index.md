@@ -16,7 +16,7 @@ i hope you like to read things. or just stare knowingly if you don't know how to
   {% for note in recent_notes limit: 5 %}
     {% assign d = note.last_modified_at | date: "%j" %}
     {%capture d %}
-      {% case d | slice: -1, 1 %}
+      {% case d | slice: -1 %}
         {% when "1" %}{{ d }}st
         {% when "2" %}{{ d }}nd
         {% when "3" %}{{ d }}rd
