@@ -59,6 +59,11 @@ body.night-mode nav a.internal-link {
     color: $color-primary;
 }
 
+body.night-mode #tooltip-wrapper a.internal-link {
+    color: $color-primary;
+    background-color: $color-subtext;
+}
+
 body.night-mode a.internal-link {
     color: $color-bg;
 }
