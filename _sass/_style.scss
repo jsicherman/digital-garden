@@ -156,3 +156,32 @@ code {
   color: #ccc;
   cursor: help;
 }
+
+del span {
+  display: inline-block;
+  background-color: black;
+  color: transparent;
+  transform: rotate(.5deg) skewx(-8deg);
+  padding: 0 1em;
+  margin: 0 -.5em;
+  user-select: none;
+  cursor: default;
+  border-radius: 2px;
+  
+  &:nth-child(1) {
+    transform: rotate(3deg);
+    margin: unset;
+  }
+  
+  &:nth-child(2) {
+    transform: rotate(-2deg);
+  }
+  
+  &:nth-child(4) {
+    transform: rotate(2deg);
+  }
+
+  &:last-child {
+    margin: unset;
+  }
+}
