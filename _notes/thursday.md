@@ -20,7 +20,7 @@ allow me to offer my thesis: twitter.
 
 when it launched in march of 2006, the world was flying high. the human genome project was finishing up the sequence of the last chromosome, _Stardust_ had just brought comet dust back to earth, i turned the ripe old age of 9... fun was at [peak popularity](https://trends.google.com/trends/explore?date=all&q=Fun).
 
-since then, "fun" has steadily fallen out of style and today, we're only at 48% fun on the fun scale (in the same timespan, we're up 46% on the [boring scale] (https://trends.google.com/trends/explore?date=all&q=Boring) and 58% on the [yerba mate scale](https://trends.google.com/trends/explore?date=all&q=%2Fm%2F01614n)).
+since then, "fun" has steadily fallen out of style and today, we're only at 48% fun on the fun scale (in the same timespan, we're up 46% on the [boring scale](https://trends.google.com/trends/explore?date=all&q=Boring) and 58% on the [yerba mate scale](https://trends.google.com/trends/explore?date=all&q=%2Fm%2F01614n)).
 
 obviously i'm joking, but the idea isn't so crazy, is it?
 
