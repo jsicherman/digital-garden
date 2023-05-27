@@ -80,6 +80,11 @@ body.night-mode a {
   }
 }
 
+body.night-mode .highlight {
+  background: #303132;
+
+}
+
 body.night-mode *:focus {
   background: $color-border !important;
   color: $color-text !important;
