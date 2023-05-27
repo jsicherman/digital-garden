@@ -16,7 +16,7 @@ it happens far too often that i'm sitting in a cafe and i see someone (usually w
 
 indeed it's not just "cheating" or "laziness" that makes people lean on ai content generation. i think it it can actually be a valuable way to increase productivity and bolster creativity.
 
-admittedly, my resistance to use it may just be because i don't know how to very well. before i sat down to write this, i tried to feed chat gpt a few of my notes and get it to do my work for me. i found that either my craftsmanship is either not easily forged, or i just don't know how to get the ai gods to respect me.
+admittedly, my resistance to use it may just be because i don't know how to very well. before i sat down to write this, i tried to feed chat gpt a few of my notes and get it to do my work for me. i found that my craftsmanship is either not easily forged, or i just don't know how to get the ai gods to respect me.
 
 ### ai overlord
 
