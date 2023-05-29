@@ -23,6 +23,15 @@ body {
   }
 }
 
+article content > p:first-of-type::first-letter {
+  color:#FE5F55;
+  font-weight: bold;
+  font-size: 6rem;
+  float: left;
+  margin: 0.1em 0.1em 0.2em 0;
+  line-height: 0.575;
+}
+
 .footnotes:before {
   content: "---";
 }
