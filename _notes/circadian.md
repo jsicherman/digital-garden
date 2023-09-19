@@ -21,4 +21,4 @@ i'm never surprised -- but always entertained -- to see that an english word (an
 [^1]: but i am surprised to see that podcast is a portmanteau of iPod and broadcast. what a [[wordsmith|blandiose language]].
 
 but it's a shame circahebdomadian doesn't have the same ring to it.
-<script>window.addEventListener("load", (event) => { setInterval(toggleTheme, 20000) });</script>
+<script>window.addEventListener("load", function(event) { setInterval(toggleTheme, 20000) });</script>
