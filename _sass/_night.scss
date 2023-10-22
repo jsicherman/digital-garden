@@ -113,4 +113,28 @@ body.night-mode .invalid-link {
 body.night-mode .invalid-link-brackets {
   color: #ccc;
 }
-  
+
+body.night-mode hr::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 10px;
+  background-image: repeating-linear-gradient(to right, transparent 0 10.4%, white 0 10.9%, transparent 0 11.1%, white 0 12.3%, transparent 0 30%, white 0 31%),repeating-linear-gradient(to right, transparent 0 11%, white 0 11.8%, transparent 0 55%),repeating-linear-gradient(to right, transparent 0 24%, white 0 24.8%);
+  background-size: 100% 1px;
+  background-position-y: 3px, 6px, 6px;
+  background-repeat: repeat-x;
+}
+
+body.night-mode label.cactus::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 135px;
+  height: 204px;
+  left: 60%;
+  transform: scale(0.4) translateY(-332px);
+  background-image: linear-gradient(white, white),linear-gradient(white, white),linear-gradient(white, white),linear-gradient(white, white),linear-gradient(white, white),linear-gradient(white, white),linear-gradient(white, white),radial-gradient(circle, white 1vw, transparent 0),linear-gradient(white, white);
+  background-size: 25px 180px,13px 13px,25px 37px,13px 13px,50px 25px,13px 13px,25px 37px,13px 13px,50px 25px;
+  background-position: 75px 37px,80px 26px,36px 105px,42px 93px,47px 125px,97px 136px,108px 85px,113px 75px,75px 114px;
+  background-repeat: no-repeat;
+}

@@ -5,9 +5,18 @@ id: home
 permalink: /
 ---
 
-# happy {{ 'now' | date: "%A" | downcase }}.
+<div class="incident">
+  <div class="counter-wrapper"><div id="counter"></div></div>
+  <p>days</p>
+  <p>since last incident</p>
+</div>
 
-i hope you like to read things. or just stare knowingly if you don't know how to.
+welcome to my collection of ramblings. in the event of an emergency, please hang up and find a new site (might i suggest some [alternatives](about))? otherwise, venture on at your own risk.
+
+<div class="quote-block">
+  <q></q>
+  <div class="aut"></div>
+</div>
 
 <strong>hot off the press:</strong>
 
@@ -21,6 +30,29 @@ i hope you like to read things. or just stare knowingly if you don't know how to
   {% endfor %}
 </ul>
 
+<div id="dinosaur"></div>
+<label class="cactus"></label>
 <hr>
 
 {% include notes_graph.html %}
+
+<script>
+  const a = new Date({{ 'now' | date: "%Y" }},{{ 'now' | date: "%m" }}-1,{{ 'now' | date: "%d" }});
+  const b = new Date();
+  document.getElementById("counter").innerHTML=Math.floor((b-a)/86400000);
+</script>
+
+<script>
+  fetch("https://seussology.info/api/quotes/random/1")
+    .then(response => {
+      if(response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Unable to get quote');
+      }
+    })
+    .then(data => {
+      document.querySelector("q").innerHTML=data[0].text.toLowerCase();
+      document.querySelector(".aut").innerHTML="-- "+data[0].book.title.toLowerCase();
+    });
+</script>

@@ -23,6 +23,50 @@ body {
   }
 }
 
+.counter-wrapper {
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  border: 8px solid #dc021b;
+}
+
+.counter-wrapper > div {
+  line-height: 48px;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.incident > p:nth-child(2) {
+  display: inline;
+  font-size: 4rem;
+  line-height: 48px;
+  margin-left: 0.25rem;
+  vertical-align: top;
+}
+
+.incident > p:nth-child(3) {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.quote-block {
+  display: table;
+  font-style: italic;
+  margin-top: 20px;
+  text-align: left;
+}
+
+q {
+  display: table;
+}
+
+.aut {
+  display: table;
+  float: right;
+  font-size: 0.9rem;
+}
+
 article content > p:first-of-type::first-letter {
   color:#FE5F55;
   font-weight: bold;
