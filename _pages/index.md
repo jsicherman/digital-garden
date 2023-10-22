@@ -38,7 +38,7 @@ welcome to my collection of ramblings. in the event of an emergency, please hang
 
 <script>
   const a = new Date({{ 'now' | date: "%Y" }},{{ 'now' | date: "%m" }}-1,{{ 'now' | date: "%d" }});
-  const b = new Date();
+  const b = new Date(new Date().getTime() + new Date().getTimezoneOffset() * 60000);
   document.getElementById("counter").innerHTML=Math.floor((b-a)/86400000);
 </script>
 
