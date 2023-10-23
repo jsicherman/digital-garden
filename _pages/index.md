@@ -7,7 +7,7 @@ permalink: /
 
 <div class="incident">
   <div class="counter-wrapper"><div id="counter"></div></div>
-  <p>days</p>
+  <p id="days-text">day</p>
   <p>since last incident</p>
 </div>
 
@@ -39,7 +39,11 @@ welcome to my collection of ramblings. in the event of an emergency, please hang
 <script>
   const a = new Date({{ 'now' | date: "%Y" }},{{ 'now' | date: "%m" }}-1,{{ 'now' | date: "%d" }});
   const b = new Date(new Date().getTime() + new Date().getTimezoneOffset() * 60000);
-  document.getElementById("counter").innerHTML=Math.floor((b-a)/86400000);
+  var days = Math.floor((b-a)/86400000);
+  document.getElementById("counter").innerHTML=days;
+  if(days != 1) {
+    document.getElementById("days-text").innerHTML="days";
+  }
 </script>
 
 <script>
