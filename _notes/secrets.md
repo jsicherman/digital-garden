@@ -6,11 +6,11 @@ title: secrets
 
 when i was visiting/interviewing in the bay area (post covid)[^1], i stayed in a victorian style airbnb in the presidio with my partner at the time. as it happens, that was the worst mistake i could have made.
 
-[^1]: i had previously visited san francisco with [[my person|home]] before covid while _she_ was interviewing, and my memories are effectively "wow this is so nice and artsy and bustling" up until she left (which is the same moment we broke up), at which point i spent the rest of the day by myself being miserable in the mission.
+[^1]: i had previously visited san francisco with [[home|my person]] before covid while _she_ was interviewing, and my memories are effectively "wow this is so nice and artsy and bustling" up until she left (which is the same moment we broke up), at which point i spent the rest of the day by myself being miserable in the mission.
 
 as i wandered around pac heights, russian hill, the richmond and the sunset, the city had seemingly infinite charm. it was like strolling through the old town in spain. i blindly assumed that the relaxed elegance applied to the whole city and when it came time to sign a lease, i chose the most luxurious building that was connected to bart, which happened to be in soma[^2].
 
-[^2]: my tendency to live in luxury is my [[fatal flaw|vanity]].
+[^2]: my tendency to live in luxury is my [[vanity|fatal flaw]].
 
 ### a new discovery
 
