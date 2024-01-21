@@ -99,7 +99,6 @@ class WindowManager {
 			let index = this.getWindowIndexFromId(this.#id);
 			this.#windows[index].shape = winShape;
 
-			//console.log(windows);
 			if (this.#winShapeChangeCallback) this.#winShapeChangeCallback();
 			this.updateWindowsLocalStorage();
 		}

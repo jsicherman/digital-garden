@@ -2,12 +2,9 @@ import WindowManager from './window_manager.js'
 
 const t = THREE;
 let camera, scene, renderer, world;
-let pixR = window.devicePixelRatio ? window.devicePixelRatio : 1;
-let cubes = [];
+let galaxies = [];
 let sceneOffsetTarget = {x: 0, y: 0};
 let sceneOffset = {x: 0, y: 0};
-const springConstant = 0.01;
-const dampingConstant = 0.95;
 
 let today = new Date();
 today.setHours(0);
@@ -19,9 +16,11 @@ today = today.getTime();
 let windowManager;
 let initialized = false;
 
+const clock = new t.Clock();
+
 // get time in seconds since beginning of the day (so that all windows use the same time)
 function getTime() {
-	return (new Date().getTime() - today) / 1000.0;
+	return Math.abs((new Date().getTime() - today) / 1000.0);
 }
 
 
@@ -56,23 +55,17 @@ if (new URLSearchParams(window.location.search).get("clear")) {
 	}
 
 	function setupScene() {
-        console.log("Initializing...");
-		camera = new t.OrthographicCamera(0, 0, window.innerWidth, window.innerHeight, -10000, 10000);
-		
-		camera.position.z = 2.5;
-
 		scene = new t.Scene();
-		scene.background = new t.Color(0.0);
-		scene.add(camera);
+		scene.background = new t.Color(255.0, 255.0, 255.0);
 
-		renderer = new t.WebGLRenderer({antialias: true, depthBuffer: true});
-		renderer.setPixelRatio(pixR);
-	    
-	  	world = new t.Object3D();
+		renderer = new t.WebGLRenderer();
+        camera = initCamera();
+
+        world = new t.Object3D();
 		scene.add(world);
 
 		renderer.domElement.setAttribute("id", "scene");
-		document.body.appendChild(renderer.domElement);
+		document.querySelector('content').appendChild(renderer.domElement);
 	}
 
 	function setupWindowManager() {
@@ -81,7 +74,7 @@ if (new URLSearchParams(window.location.search).get("clear")) {
 		windowManager.setWinChangeCallback(windowsUpdated);
 
 		// here you can add your custom metadata to each windows instance
-		let metaData = {};
+		let metaData = {foo: "bar"};
 
 		// this will init the windowmanager and add this window to the centralised pool of windows
 		windowManager.init(metaData);
@@ -91,53 +84,94 @@ if (new URLSearchParams(window.location.search).get("clear")) {
 	}
 
 	function windowsUpdated() {
-		updateNumberOfCubes();
+		updateNumberOfGalaxies();
 	}
 
-	function updateNumberOfCubes() {
+	function updateNumberOfGalaxies() {
 		let wins = windowManager.getWindows();
 
-		// remove all cubes
-		cubes.forEach((c) => {
-			world.remove(c);
+		// remove all galaxies
+		galaxies.forEach((g) => {
+			world.remove(g);
 		})
 
-		cubes = [];
+		galaxies = [];
 
-		// add new cubes based on the current window setup
+		// add new galaxies based on the current window setup
 		for (let i = 0; i < wins.length; i++) {
-            console.log("Adding cube...");
 			let win = wins[i];
 
-			let c = new t.Color();
-			c.setHSL(i * .1, 1.0, .5);
+            let galaxy = createGalaxy(win, i);
 
-			let s = 100 + i * 50;
-			let cube = new t.Mesh(new t.BoxGeometry(s, s, s), new t.MeshBasicMaterial({color: c , wireframe: true}));
-			cube.position.x = win.shape.x + (win.shape.w * .5);
-			cube.position.y = win.shape.y + (win.shape.h * .5);
-
-            // Check if rotation speeds exist in localStorage
-            if (localStorage.getItem(`cube${i}RotationSpeedX`) && localStorage.getItem(`cube${i}RotationSpeedY`)) {
-                cube.rotationSpeedX = parseFloat(localStorage.getItem(`cube${i}RotationSpeedX`));
-                cube.rotationSpeedY = parseFloat(localStorage.getItem(`cube${i}RotationSpeedY`));
-            } else {
-                cube.rotationSpeedX = 0.01 + Math.random() * 0.01; // Initialize rotation speed
-                cube.rotationSpeedY = 0.02 + Math.random() * 0.01; // Initialize rotation speed
-                // Save rotation speeds to localStorage
-                localStorage.setItem(`cube${i}RotationSpeedX`, cube.rotationSpeedX);
-                localStorage.setItem(`cube${i}RotationSpeedY`, cube.rotationSpeedY);
-            }
-			cube.velocity = new THREE.Vector3(0, 0, 0);
-
-			world.add(cube);
-			cubes.push(cube);
+			world.add(galaxy);
+			galaxies.push(galaxy);
 		}
 	}
 
+    function createGalaxy(win, i) {
+        if(!camera) { return; }
+
+        let c = new t.Color();
+        c.setHSL(i * .1, 1.0, .5);
+
+        const galaxy = new t.Group();
+
+        galaxy.position.z = -10;
+
+        // Check if rotation speeds exist in localStorage
+        if (!localStorage.getItem(`galaxy${i}RotationSpeedX`) || !localStorage.getItem(`galaxy${i}RotationSpeedY`) || !localStorage.getItem(`galaxy${i}RotationSpeedZ`)) {
+            localStorage.setItem(`galaxy${i}RotationSpeedX`, 0.02 + Math.random() * 0.03);
+            localStorage.setItem(`galaxy${i}RotationSpeedY`, 0.02 + Math.random() * 0.03);
+            localStorage.setItem(`galaxy${i}RotationSpeedZ`, 0.02 + Math.random() * 0.03);
+        }
+        galaxy.rotationSpeedX = parseFloat(localStorage.getItem(`galaxy${i}RotationSpeedX`));
+        galaxy.rotationSpeedY = parseFloat(localStorage.getItem(`galaxy${i}RotationSpeedY`));
+        galaxy.rotationSpeedZ = parseFloat(localStorage.getItem(`galaxy${i}RotationSpeedZ`));
+
+        galaxy.velocity = new t.Vector3(0, 0, 0);
+
+        const particleCount = 3000;
+        const particleGeometry = new t.BufferGeometry();
+        const particlePositions = new Float32Array(particleCount * 3);
+
+        for (let i = 0; i < particleCount * 3; i += 3) {
+            const radius = Math.random() * 3;
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.acos(2 * Math.random() - 1);
+            const sinPhi = Math.sin(phi);
+
+            const x = radius * sinPhi * Math.cos(theta);
+            const y = radius * sinPhi * Math.sin(theta);
+            const z = radius * Math.cos(phi);
+
+            particlePositions[i] = x;
+            particlePositions[i + 1] = y;
+            particlePositions[i + 2] = z;
+        }
+
+        // Create a sphere geometry for the galaxy
+        /*const geometry = new t.SphereGeometry(3, 32, 32);
+        // Create a material for the particles
+        const material = new t.MeshBasicMaterial({ color: c, opacity: 0.05, transparent: true });
+        // Create a Points object and add it to the galaxy
+        const container = new t.Mesh(geometry, material);
+        galaxy.add(container);*/
+
+        particleGeometry.addAttribute('position', new t.BufferAttribute(particlePositions, 3));
+        const particleMaterial = new t.PointsMaterial({ color: c, size: 0.04 });
+        const particleSystem = new t.Points(particleGeometry, particleMaterial);
+        particleSystem.name = 'particleSystem';
+        galaxy.add(particleSystem);
+
+        return galaxy;
+    }
+
 	function updateWindowShape(easing = true) {
 		// storing the actual offset in a proxy that we update against in the render function
-		sceneOffsetTarget = {x: -window.screenX, y: -window.screenY};
+		sceneOffsetTarget = {
+            x: -window.screenX,
+            y: -window.screenY,
+        };
 		if (!easing) sceneOffset = sceneOffsetTarget;
 	}
 
@@ -151,50 +185,60 @@ if (new URLSearchParams(window.location.search).get("clear")) {
 		let falloff = .05;
 		sceneOffset.x = sceneOffset.x + ((sceneOffsetTarget.x - sceneOffset.x) * falloff);
 		sceneOffset.y = sceneOffset.y + ((sceneOffsetTarget.y - sceneOffset.y) * falloff);
-
-		// set the world position to the offset
-		world.position.x = sceneOffset.x;
-		world.position.y = sceneOffset.y;
+        
+        // set the world position to the offset
+		//world.position.x = sceneOffset.x
+		//world.position.y = sceneOffset.y;
 
 		let wins = windowManager.getWindows();
 
-		// loop through all our cubes and update their positions based on current window positions
-		for (let i = 0; i < cubes.length; i++) {
-			let cube = cubes[i];
+		// loop through all our galaxies and update their positions based on current window positions
+		for (let i = 0; i < galaxies.length; i++) {
+			let galaxy = galaxies[i];
 			let win = wins[i];
-			let posTarget = {x: win.shape.x + (win.shape.w * .5), y: win.shape.y + (win.shape.h * .5)}
 
-			// Calculate the spring force
-			let springForceX = (posTarget.x - cube.position.x) * springConstant;
-			let springForceY = (posTarget.y - cube.position.y) * springConstant;
+            // Each galaxy is at (0, 0, -10) in its respective window
+            // The window exists on the screen at (window.screenLeft, window.screenTop)
+            // So each galaxy is at (win.screenLeft, win.screenTop, -10) in screen coordinates of its window
+            //
+            // The difficulty is that window.screenLeft/window.screenTop is (0, 0)
+            // so our win is actually sitting at an offset of
+            // (win.screenLeft - window.screenLeft, win.screenTop - window.screenTop)
+            // In units of screen pixels. There are renderer.getSize().width pixels per viewport so this is just
+            // (win.screenLeft - window.screenLeft) / renderer.getSize().width
+            screen.width
+			let posTarget = {
+                x: 27 * (win.shape.x - window.screenLeft) / renderer.getSize().width,
+                y: 27 * (win.shape.y - window.screenTop - window.innerHeight / 2 * (window.scrollY - window.innerHeight / 3) / screen.height) / renderer.getSize().height
+            };
 
-			// Apply the spring force to the velocity
-			cube.velocity.x += springForceX;
-			cube.velocity.y += springForceY;
+			galaxy.position.x = galaxy.position.x + (posTarget.x - galaxy.position.x) * falloff;
+			galaxy.position.y = galaxy.position.y + (posTarget.y - galaxy.position.y) * falloff;
 
-			// Apply damping to the velocity
-			cube.velocity.x *= dampingConstant;
-			cube.velocity.y *= dampingConstant;
-
-			// Update the position based on the velocity
-			cube.position.x += cube.velocity.x;
-			cube.position.y += cube.velocity.y;
-
-			cube.rotation.x += cube.rotationSpeedX; // Use the previously initialized speed
-			cube.rotation.y += cube.rotationSpeedY; // Use the previously initialized speed
+			galaxy.rotation.x += galaxy.rotationSpeedX;
+			galaxy.rotation.y += galaxy.rotationSpeedY;
+			galaxy.rotation.z += galaxy.rotationSpeedZ;
 		};
 
-		renderer.render(scene, camera);
 		requestAnimationFrame(render);
+		renderer.render(scene, camera);
+    }
+
+    function initCamera() {
+		let width = screen.width;// window.innerWidth;
+		let height = screen.height;//window.innerHeight;
+
+        const camera = new t.PerspectiveCamera(75, width / height, 0.1, 1000);
+        camera.z = 5;
+
+		camera.updateProjectionMatrix();
+		renderer.setSize(width, height);
+
+        return camera;
     }
 
 	// resize the renderer to fit the window size
 	function resize() {
-		let width = window.innerWidth;
-		let height = window.innerHeight
-		
-		camera = new t.OrthographicCamera(0, width, 0, height, -10000, 10000);
-		camera.updateProjectionMatrix();
-		renderer.setSize( width, height );
+        camera = initCamera();
 	}
 }
