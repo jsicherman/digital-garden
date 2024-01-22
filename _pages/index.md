@@ -23,7 +23,7 @@ welcome to my collection of ramblings. in the event of an emergency, please hang
 <ul>
   {% assign recent_notes = site.notes | sort: "last_modified_at_timestamp" | reverse %}
   {% for note in recent_notes limit: 5 %}
-    {% assign d = note.last_modified_at | date: "%j" | ordinal_suffix %}
+    {% assign d = note.last_modified_at | date: "%-j" | ordinal_suffix %}
     <li>
       {{ note.last_modified_at | date: "the DAY day of %Y" | replace: "DAY", d }} — <a class="internal-link" href="{{ note.url }}">{{ note.title }}</a>
     </li>

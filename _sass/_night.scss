@@ -138,3 +138,7 @@ body.night-mode label.cactus::after {
   background-position: 75px 37px,80px 26px,36px 105px,42px 93px,47px 125px,97px 136px,108px 85px,113px 75px,75px 114px;
   background-repeat: no-repeat;
 }
+
+body.night-mode #title::after, body.night-mode #last::after {
+  background: white;
+}
