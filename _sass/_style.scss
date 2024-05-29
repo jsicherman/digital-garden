@@ -76,6 +76,28 @@ article content > p:first-of-type::first-letter {
   line-height: 0.575;
 }
 
+quote p {
+  color: #949494;
+}
+
+quote > p::before {
+  content: "“";
+  float: left;
+}
+
+quote > p::after {
+  content: "”";
+  float: right;
+}
+
+quote > p::before, quote > p::after {
+  color:#FE5F55;
+  font-weight: bold;
+  font-size: 6rem;
+  margin: 0.1em 0.1em 0.2em 0;
+  line-height: 0.575;
+}
+
 .footnotes:before {
   content: "---";
 }

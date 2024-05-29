@@ -82,7 +82,6 @@ body.night-mode a {
 
 body.night-mode .highlight {
   background: #303132;
-
 }
 
 body.night-mode *:focus {
@@ -99,6 +98,10 @@ body.night-mode .backlink-box .internal-link {
     &:hover {
       background-color: #303132;
     }
+}
+
+body.night-mode quote p {
+  color: #e8e8e8;
 }
 
 body.night-mode code {
