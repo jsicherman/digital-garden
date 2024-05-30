@@ -11,7 +11,7 @@ permalink: /
   <p>since last incident</p>
 </div>
 
-welcome to my collection of ramblings. in the event of an emergency, please hang up and find a new site (might i suggest some [alternatives](about))? otherwise, venture on at your own risk.
+welcome to my collection of {{ site.notes.size }} ramblings. in the event of an emergency, please hang up and find a new site (might i suggest some [alternatives](about))? otherwise, venture on at your <a id="lucky" class="internal-link" href="#">own risk</a>.
 
 <div class="quote-block">
   <q></q>
@@ -44,6 +44,14 @@ welcome to my collection of ramblings. in the event of an emergency, please hang
   if(days != 1) {
     document.getElementById("days-text").innerHTML="days";
   }
+</script>
+
+<script>
+  let notes = [];
+  {% for item in site.notes %}
+     notes.push("{{item.url}}");
+  {% endfor %}
+  document.getElementById("lucky").href = notes[notes.length * Math.random() | 0];
 </script>
 
 <script>
