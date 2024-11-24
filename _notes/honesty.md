@@ -1,0 +1,7 @@
+---
+title: …
+---
+
+### [[fourth-of-july|…]]
+
+<del style="line-height: 1.3;"><span>no</span> <span>love</span> <span>without</span> <span>honesty</span> <span>there</span> <span>can</span> <span>be</span> <span>no</span> <span>love</span> <span>without</span> <span>honesty</span></del> there <del style="line-height: 1.3;"><span>can</span> <span>be</span> <span>no</span> <span>love</span> <span>without</span> <span>honesty</span> <span>there</span></del> can <del style="line-height: 1.3;"><span>be</span> <span>no</span> <span>love</span> <span>without</span> <span>honesty</span> <span>there</span> <span>can</span></del> be <del style="line-height: 1.3;"><span>no</span> <span>love</span> <span>without</span> <span>honesty</span><span>there</span> <span>can</span> <span>be</span></del> no <del style="line-height: 1.3;"><span>love</span> <span>without</span> <span>honesty</span> <span>there</span> <span>can</span> <span>be</span> <span>no</span> <span>love</span> <span>without</span> <span>honesty</span> <span>there</span> <span>can</span> <span>be</span> <span>no</span></del> love <del style="line-height: 1.3;"><span>.</span><span>.</span><span>.</span></del> without <del style="line-height: 1.3;"><span>there</span> <span>can</span> <span>be</span> <span>no</span> <span>love</span> <span>without</span></del> honesty <del style="line-height: 1.3;"><span>or</span> <span>can</span> <span>there</span> <span>be?</span></del>
